@@ -1,23 +1,24 @@
-#include<stdio.h>
+#include<bits/stdc++.h>
+using namespace std;
+ 
 int main(){
-
-   int i, j, k, temp, n[100];
-   printf("size of array element: ");
-   scanf("%d",&k);
-   printf("Enter %d elements: ", k);
-   for(i=0;i<k;i++)
-      scanf("%d",&n[i]);
-   for(i=1;i<k;i++){
-      temp=n[i];
-      j=i-1;
-      while((temp<n[j])&&(j>=0)){
-         n[j+1]=n[j];
-         j=j-1;
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++){
+      cin>>a[i];
+    }
+    for(int i=0;i<n-1;i++){
+      for(int j=i+1;j<n;j++){
+         if(a[j]<a[i]){
+          int temp=a[j];
+          a[j]=a[i];
+          a[i]=temp;
+         }
       }
-      n[j+1]=temp;
-   }
-   printf("Sorted elements: ");
-   for(i=0;i<k;i++)
-      printf(" %d",n[i]);
-   return 0;
+    }
+    for(int i=0;i<n;i++){
+      cout<<a[i]<<" ";
+    }
+    
 }
